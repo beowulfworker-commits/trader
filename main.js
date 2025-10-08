@@ -15,6 +15,10 @@
 
   const navToggle = document.querySelector('[data-header-toggle]');
   const navMenu = document.querySelector('[data-header-menu]');
+  const yearEl = document.getElementById('y');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
 
   if (navToggle && navMenu) {
     const desktopQuery = window.matchMedia('(min-width: 901px)');
@@ -106,7 +110,7 @@
   }
 
   function trapFocus(e){
-    if(!modal.classList.contains('is-open')) return;
+    if(!modal || !modal.classList.contains('is-open')) return;
     const focusables = dialog.querySelectorAll(FOCUSABLE.join(','));
     if(!focusables.length) return;
     const first = focusables[0];
