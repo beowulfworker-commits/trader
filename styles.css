@@ -171,6 +171,10 @@ textarea{resize:vertical;min-height:120px}
   transition:transform .2s ease, opacity .2s ease;
   overflow:auto;
 }
+.modal__dialog{-webkit-overflow-scrolling:touch}
+@supports (height: 100dvh){
+  .modal__dialog{max-height:calc(100dvh - 48px)}
+}
 .modal.is-open .modal__dialog{transform:none;opacity:1}
 .modal__close{position:absolute;top:12px;right:12px;border:none;background:transparent;color:var(--muted);padding:10px;border-radius:8px;cursor:pointer}
 .modal__title{margin:0 0 8px;font-size:24px;font-weight:700}
@@ -230,6 +234,9 @@ body.is-locked{overflow:hidden}
   .footer__inner{flex-direction:column;align-items:flex-start}
   .footer__links{flex-wrap:wrap;gap:10px}
   .modal__dialog{max-height:calc(100vh - 32px)}
+  @supports (height: 100dvh){
+    .modal__dialog{max-height:calc(100dvh - 32px)}
+  }
 }
 @media (max-width: 420px){
   body{font-size:clamp(15px, 5vw, 17px)}
