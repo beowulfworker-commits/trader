@@ -13,36 +13,40 @@
     '[tabindex]:not([tabindex="-1"])'
   ];
 
+  const focusableSelector = FOCUSABLE.join(',');
   const navToggle = document.querySelector('[data-header-toggle]');
   const navMenu = document.querySelector('[data-header-menu]');
 
   if (navToggle && navMenu) {
-    const desktopQuery = window.matchMedia('(min-width: 901px)');
+    const desktopQuery = window.matchMedia('(min-width: 1024px)');
     const menuItems = navMenu.querySelectorAll('a, button');
     let outsideClickTimer = null;
 
     document.body.classList.add('js-nav-ready');
 
-    function handleMenuKeydown(event) {
+    const setMenuHiddenState = (hidden) => {
+      navMenu.setAttribute('aria-hidden', hidden ? 'true' : 'false');
+    };
+
+    const handleMenuKeydown = (event) => {
       if (event.key === 'Escape') {
         updateMenu(false, { focusToggle: true });
       }
-    }
+    };
 
-    function handleOutsideClick(event) {
+    const handleOutsideClick = (event) => {
       if (!navMenu.contains(event.target) && !navToggle.contains(event.target)) {
         updateMenu(false);
       }
-    }
+    };
 
-    function updateMenu(open, options = {}) {
+    const updateMenu = (open, options = {}) => {
       const { focusToggle = false } = options;
       navToggle.setAttribute('aria-expanded', String(open));
       navToggle.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
       navMenu.classList.toggle('is-open', open);
-      const shouldHide = !open && !desktopQuery.matches;
-      navMenu.setAttribute('aria-hidden', shouldHide ? 'true' : 'false');
       document.body.classList.toggle('is-menu-open', open);
+      setMenuHiddenState(!open && !desktopQuery.matches);
 
       if (open) {
         document.addEventListener('keydown', handleMenuKeydown);
@@ -61,27 +65,26 @@
           navToggle.focus({ preventScroll: true });
         }
       }
-    }
+    };
 
     const handleQueryChange = (event) => {
       if (event.matches) {
         updateMenu(false);
         navMenu.classList.remove('is-open');
-        navMenu.setAttribute('aria-hidden', 'false');
+        setMenuHiddenState(false);
         document.body.classList.remove('is-menu-open');
         if (outsideClickTimer) {
           window.clearTimeout(outsideClickTimer);
           outsideClickTimer = null;
         }
         document.removeEventListener('click', handleOutsideClick);
-      } else if (navToggle.getAttribute('aria-expanded') === 'true') {
-        navMenu.setAttribute('aria-hidden', 'false');
       } else {
-        navMenu.setAttribute('aria-hidden', 'true');
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        setMenuHiddenState(!isExpanded);
       }
     };
 
-    navMenu.setAttribute('aria-hidden', desktopQuery.matches ? 'false' : 'true');
+    setMenuHiddenState(!desktopQuery.matches);
 
     navToggle.addEventListener('click', () => {
       const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
@@ -96,9 +99,9 @@
       });
     });
 
-    if (desktopQuery.addEventListener) {
+    if (typeof desktopQuery.addEventListener === 'function') {
       desktopQuery.addEventListener('change', handleQueryChange);
-    } else if (desktopQuery.addListener) {
+    } else if (typeof desktopQuery.addListener === 'function') {
       desktopQuery.addListener(handleQueryChange);
     }
 
@@ -107,7 +110,7 @@
 
   function trapFocus(e){
     if(!modal.classList.contains('is-open')) return;
-    const focusables = dialog.querySelectorAll(FOCUSABLE.join(','));
+    const focusables = dialog.querySelectorAll(focusableSelector);
     if(!focusables.length) return;
     const first = focusables[0];
     const last = focusables[focusables.length - 1];
@@ -130,7 +133,7 @@
     document.body.classList.add('is-locked');
     modal.removeAttribute('aria-hidden');
     setTimeout(() => {
-      const el = dialog.querySelector(FOCUSABLE.join(','));
+      const el = dialog.querySelector(focusableSelector);
       el?.focus();
     }, 0);
     document.addEventListener('keydown', trapFocus);
@@ -168,4 +171,9 @@
 
   // Expose for debugging in console
   window.DemoModal = { open: openModal, close: closeModal };
+
+  const yearTarget = document.getElementById('y');
+  if (yearTarget) {
+    yearTarget.textContent = new Date().getFullYear();
+  }
 })();
