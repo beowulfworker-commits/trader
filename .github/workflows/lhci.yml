@@ -1,0 +1,98 @@
+name: Lighthouse CI
+
+on:
+  push:
+    branches:
+      - main
+      - feat/responsive-refactor
+  pull_request:
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build (if available)
+        run: npm run build --if-present
+
+      - name: Run Lighthouse CI
+        id: lhci
+        continue-on-error: true
+        run: npx lhci autorun --config=lighthouserc.json --upload.target=filesystem --upload.outputDir=reports
+
+      - name: Prepare Lighthouse artifacts
+        if: always()
+        run: |
+          if [ -f reports/lhr-0.json ]; then
+            AFTER_PATH="reports/after-home.json"
+            rm -f "$AFTER_PATH"
+            mv reports/lhr-0.json "$AFTER_PATH"
+          fi
+
+      - name: Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: |
+            reports/after-home.json
+            reports/report-0.html
+          if-no-files-found: warn
+
+      - name: Comment Lighthouse summary
+        if: always() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        env:
+          LHCI_OUTCOME: ${{ steps.lhci.outcome }}
+        with:
+          script: |
+            const fs = require('fs');
+            const path = 'reports/after-home.json';
+            if (!fs.existsSync(path)) {
+              core.warning('Lighthouse report not found, skipping comment.');
+              return;
+            }
+            const report = JSON.parse(fs.readFileSync(path, 'utf8'));
+            const categories = report.categories || {};
+            const formatScore = (category) => {
+              const score = categories[category]?.score;
+              return typeof score === 'number' ? `${Math.round(score * 100)}` : 'n/a';
+            };
+            const rows = [
+              '| Категория | Оценка |',
+              '| --- | --- |',
+              `| Performance | ${formatScore('performance')} |`,
+              `| Accessibility | ${formatScore('accessibility')} |`,
+              `| Best Practices | ${formatScore('best-practices')} |`,
+              `| SEO | ${formatScore('seo')} |`
+            ].join('\n');
+            const outcome = process.env.LHCI_OUTCOME === 'success' ? '✅ Проверка пройдена' : '⚠️ Требуются улучшения';
+            const body = [
+              '### Lighthouse CI summary',
+              outcome,
+              '',
+              rows,
+              '',
+              'Пороговые значения: Performance ≥ 90, Accessibility ≥ 95, Best Practices ≥ 90, SEO ≥ 90.',
+              'Полный отчёт доступен в артефакте `reports/after-home.json`.'
+            ].join('\n');
+            await github.rest.issues.createComment({
+              ...context.repo,
+              issue_number: context.issue.number,
+              body
+            });
+
+      - name: Fail if Lighthouse assertions did not pass
+        if: steps.lhci.outcome == 'failure'
+        run: exit 1

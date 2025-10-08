@@ -10,10 +10,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body id="top">
+  <a class="skip-link" href="#main-content">К основному содержанию</a>
+
   <header class="header" data-sticky>
     <div class="container header__inner">
-      <a class="logo" href="#">OnTrading<span>Academy</span></a>
+      <a class="logo" href="#top">OnTrading<span>Academy</span></a>
       <button class="header__toggle" type="button" aria-expanded="false" aria-controls="header-menu" aria-label="Открыть меню" data-header-toggle>
         <span class="sr-only">Меню</span>
         <span class="header__toggle-bars" aria-hidden="true">
@@ -24,17 +26,19 @@
       </button>
       <div class="header__menu" id="header-menu" data-header-menu>
         <nav class="nav" aria-label="Основная навигация">
-          <a class="nav__link" href="#about">О курсе</a>
-          <a class="nav__link" href="#program">Программа</a>
-          <a class="nav__link" href="#experts">Эксперты</a>
-          <a class="nav__link" href="#faq">FAQ</a>
+          <ul class="nav__list" role="list">
+            <li><a class="nav__link" href="#about" aria-current="page">О курсе</a></li>
+            <li><a class="nav__link" href="#program">Программа</a></li>
+            <li><a class="nav__link" href="#experts">Эксперты</a></li>
+            <li><a class="nav__link" href="#faq">FAQ</a></li>
+          </ul>
         </nav>
-        <button class="btn btn--primary header__cta" data-modal-open>Записаться</button>
+        <button class="btn btn--primary header__cta" type="button" data-modal-open>Записаться</button>
       </div>
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="section hero" id="about">
       <div class="container hero__inner">
         <div class="hero__content">
@@ -50,12 +54,12 @@
             <button class="btn btn--primary" data-modal-open>Получить консультацию</button>
             <a class="btn btn--ghost" href="#program">Смотреть программу</a>
           </div>
-          <div class="hero__note">Без спама и навязчивых продаж — только актуальная информация о старте и спецусловиях.</div>
+          <p class="hero__note">Без спама и навязчивых продаж — только актуальная информация о старте и спецусловиях.</p>
         </div>
-        <div class="hero__visual" aria-hidden="true">
+        <div class="hero__visual">
           <div class="hero__badge">Полностью онлайн</div>
           <div class="hero__panel">
-            <h3>Результаты выпускников 2024</h3>
+            <p class="hero__panel-title">Результаты выпускников 2024</p>
             <ul>
               <li><span>82%</span> защитили депозит и удержали планку риска</li>
               <li><span>64%</span> вышли в стабильный плюс на демо-счёте</li>
@@ -65,17 +69,19 @@
           </div>
         </div>
       </div>
-      <div class="container stats">
-        <div class="stats__item"><strong>3</strong><span> авторские стратегии под разные рынки</span></div>
-        <div class="stats__item"><strong>24/7</strong><span>чат поддержки с наставниками</span></div>
-        <div class="stats__item"><strong>+6</strong><span>дополнительных мастер-классов и бонусов</span></div>
+      <div class="container">
+        <ul class="stats" role="list">
+          <li class="stats__item"><strong>3</strong><span> авторские стратегии под разные рынки</span></li>
+          <li class="stats__item"><strong>24/7</strong><span>чат поддержки с наставниками</span></li>
+          <li class="stats__item"><strong>+6</strong><span>дополнительных мастер-классов и бонусов</span></li>
+        </ul>
       </div>
     </section>
 
     <section class="section why" id="why">
       <div class="container">
         <h2 class="section__title">Почему трейдеры выбирают OnTradingAcademy</h2>
-        <div class="grid grid--3">
+        <div class="grid grid--cards-3">
           <article class="feature-card">
             <h3>Стратегия, а не хаос</h3>
             <p>Вы получите чек-листы входа и выхода, рабочие шаблоны анализа рынка и алгоритмы действий в разных сценариях.</p>
@@ -89,7 +95,7 @@
             <p>Вы учитесь принимать решения на основе живых графиков, экономических событий и новостных факторов.</p>
           </article>
         </div>
-        <div class="grid grid--3">
+        <div class="grid grid--cards-3">
           <article class="feature-card">
             <h3>Контроль рисков</h3>
             <p>С первого урока закрепляем риск-менеджмент: размер позиции, план движения цены и правила, которые защищают депозит.</p>
@@ -163,7 +169,7 @@
             <h3>Хотите обсудить, подходит ли программа?</h3>
             <p>Оставьте заявку — менеджер перезвонит и поможет выбрать формат участия.</p>
           </div>
-          <button class="btn btn--primary" data-modal-open>Оставить заявку</button>
+          <button class="btn btn--primary" type="button" data-modal-open>Оставить заявку</button>
         </div>
       </div>
     </section>
@@ -171,7 +177,7 @@
     <section class="section format" id="format">
       <div class="container">
         <h2 class="section__title">Формат обучения и поддержка</h2>
-        <div class="grid grid--3">
+        <div class="grid grid--cards-3">
           <article class="format-card">
             <h3>Живые эфиры + записи</h3>
             <p>Каждую неделю вы получаете 2 живых занятия и доступ к записи, чтобы пересматривать материалы в удобное время.</p>
@@ -185,7 +191,7 @@
             <p>Обменивайтесь идеями, получайте подсказки по сделкам и участвуйте в еженедельных сессиях вопросов и ответов.</p>
           </article>
         </div>
-        <div class="grid grid--2">
+        <div class="grid grid--cards-2">
           <article class="format-card">
             <h3>Личный кабинет</h3>
             <p>Система прогресса, доступ к материалам, чек-листам и фиксация домашних заданий в одном месте.</p>
@@ -202,7 +208,7 @@
       <div class="container">
         <h2 class="section__title">Наставники и эксперты курса</h2>
         <p class="section__lead">Команда практикующих трейдеров с опытом от 5 до 12 лет. Каждый из них сопровождает участников и делится собственными рабочими моделями.</p>
-        <div class="grid grid--3">
+        <div class="grid grid--cards-3">
           <article class="expert-card">
             <div class="expert-card__avatar" aria-hidden="true">АК</div>
             <h3>Алексей Ковалёв</h3>
@@ -224,16 +230,16 @@
 
     <section class="section guarantee" id="guarantee">
       <div class="container">
-        <div class="cta">
-          <div>
-            <h3>Прозрачные условия и гарантия возврата</h3>
-            <p>Если за первые 14 дней курс окажется не тем, чего вы ожидали, мы вернём оплату. Формируем расписание, учитывая ваш часовой пояс, и подбираем комфортный темп обучения.</p>
+          <div class="cta">
+            <div>
+              <h3>Прозрачные условия и гарантия возврата</h3>
+              <p>Если за первые 14 дней курс окажется не тем, чего вы ожидали, мы вернём оплату. Формируем расписание, учитывая ваш часовой пояс, и подбираем комфортный темп обучения.</p>
+            </div>
+            <div class="cta__actions">
+              <button class="btn btn--primary" type="button" data-modal-open>Оставить заявку</button>
+              <a class="btn btn--ghost" href="#faq">Изучить ответы</a>
+            </div>
           </div>
-          <div class="cta__actions">
-            <button class="btn btn--primary" data-modal-open>Оставить заявку</button>
-            <a class="btn btn--ghost" href="#faq">Изучить ответы</a>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -266,25 +272,25 @@
 
   <footer class="footer">
     <div class="container footer__inner">
-      <div>© <span id="y"></span> OnTradingAcademy. Обучение трейдингу и управление рисками.</div>
-      <div class="footer__links">
-        <a href="#" aria-disabled="true">Политика конфиденциальности</a>
-        <a href="#" aria-disabled="true">Пользовательское соглашение</a>
-        <button class="btn btn--sm" data-modal-open>Связаться</button>
-      </div>
+      <p class="footer__copy">© <span id="y"></span> OnTradingAcademy. Обучение трейдингу и управление рисками.</p>
+      <ul class="footer__links" role="list">
+        <li class="footer__link" aria-disabled="true">Политика конфиденциальности</li>
+        <li class="footer__link" aria-disabled="true">Пользовательское соглашение</li>
+        <li><button class="btn btn--sm" type="button" data-modal-open>Связаться</button></li>
+      </ul>
     </div>
   </footer>
 
   <div class="modal" data-modal aria-hidden="true">
     <div class="modal__backdrop" data-modal-close></div>
-    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title" data-modal-dialog>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-description" data-modal-dialog>
       <button class="modal__close" aria-label="Закрыть" data-modal-close>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </button>
       <h2 id="modal-title" class="modal__title">Оставьте заявку</h2>
-      <p class="modal__text">Заполните форму — менеджер свяжется с вами, расскажет о программе и подберёт формат участия. Кнопка «Отправить» демонстрирует работу интерфейса и не передает данные на сервер.</p>
+      <p id="modal-description" class="modal__text">Заполните форму — менеджер свяжется с вами, расскажет о программе и подберёт формат участия. Кнопка «Отправить» демонстрирует работу интерфейса и не передает данные на сервер.</p>
       <form class="form" id="lead-form" novalidate>
         <label class="form__field">
           <span>Имя</span>
@@ -301,15 +307,14 @@
         <button class="btn btn--primary btn--full" type="submit">Отправить (демо)</button>
         <p class="form__note">Данные выводятся в консоль браузера для тестирования интерфейса.</p>
       </form>
-      <div class="modal__success" hidden>
+      <div class="modal__success" role="status" hidden>
         <h3>Спасибо! Заявка получена</h3>
         <p>Мы сохранили данные в локальной консоли. Менеджер свяжется с вами в рабочее время.</p>
-        <button class="btn btn--primary" data-modal-close>Вернуться на сайт</button>
+        <button class="btn btn--primary" type="button" data-modal-close>Вернуться на сайт</button>
       </div>
     </div>
   </div>
 
-  <script src="main.js"></script>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
