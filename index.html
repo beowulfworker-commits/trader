@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Перейти к основному содержанию</a>
+
   <header class="header" data-sticky>
     <div class="container header__inner">
       <a class="logo" href="#">OnTrading<span>Academy</span></a>
@@ -34,7 +36,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="section hero" id="about">
       <div class="container hero__inner">
         <div class="hero__content">
@@ -309,7 +311,6 @@
     </div>
   </div>
 
-  <script src="main.js"></script>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script src="main.js" defer></script>
 </body>
 </html>
