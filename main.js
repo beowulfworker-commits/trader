@@ -13,6 +13,98 @@
     '[tabindex]:not([tabindex="-1"])'
   ];
 
+  const navToggle = document.querySelector('[data-header-toggle]');
+  const navMenu = document.querySelector('[data-header-menu]');
+
+  if (navToggle && navMenu) {
+    const desktopQuery = window.matchMedia('(min-width: 901px)');
+    const menuItems = navMenu.querySelectorAll('a, button');
+    let outsideClickTimer = null;
+
+    document.body.classList.add('js-nav-ready');
+
+    function handleMenuKeydown(event) {
+      if (event.key === 'Escape') {
+        updateMenu(false, { focusToggle: true });
+      }
+    }
+
+    function handleOutsideClick(event) {
+      if (!navMenu.contains(event.target) && !navToggle.contains(event.target)) {
+        updateMenu(false);
+      }
+    }
+
+    function updateMenu(open, options = {}) {
+      const { focusToggle = false } = options;
+      navToggle.setAttribute('aria-expanded', String(open));
+      navToggle.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+      navMenu.classList.toggle('is-open', open);
+      const shouldHide = !open && !desktopQuery.matches;
+      navMenu.setAttribute('aria-hidden', shouldHide ? 'true' : 'false');
+      document.body.classList.toggle('is-menu-open', open);
+
+      if (open) {
+        document.addEventListener('keydown', handleMenuKeydown);
+        outsideClickTimer = window.setTimeout(() => {
+          document.addEventListener('click', handleOutsideClick);
+          outsideClickTimer = null;
+        });
+      } else {
+        document.removeEventListener('keydown', handleMenuKeydown);
+        if (outsideClickTimer) {
+          window.clearTimeout(outsideClickTimer);
+          outsideClickTimer = null;
+        }
+        document.removeEventListener('click', handleOutsideClick);
+        if (focusToggle) {
+          navToggle.focus({ preventScroll: true });
+        }
+      }
+    }
+
+    const handleQueryChange = (event) => {
+      if (event.matches) {
+        updateMenu(false);
+        navMenu.classList.remove('is-open');
+        navMenu.setAttribute('aria-hidden', 'false');
+        document.body.classList.remove('is-menu-open');
+        if (outsideClickTimer) {
+          window.clearTimeout(outsideClickTimer);
+          outsideClickTimer = null;
+        }
+        document.removeEventListener('click', handleOutsideClick);
+      } else if (navToggle.getAttribute('aria-expanded') === 'true') {
+        navMenu.setAttribute('aria-hidden', 'false');
+      } else {
+        navMenu.setAttribute('aria-hidden', 'true');
+      }
+    };
+
+    navMenu.setAttribute('aria-hidden', desktopQuery.matches ? 'false' : 'true');
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+      updateMenu(!isOpen);
+    });
+
+    menuItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        if (!desktopQuery.matches) {
+          updateMenu(false);
+        }
+      });
+    });
+
+    if (desktopQuery.addEventListener) {
+      desktopQuery.addEventListener('change', handleQueryChange);
+    } else if (desktopQuery.addListener) {
+      desktopQuery.addListener(handleQueryChange);
+    }
+
+    handleQueryChange(desktopQuery);
+  }
+
   function trapFocus(e){
     if(!modal.classList.contains('is-open')) return;
     const focusables = dialog.querySelectorAll(FOCUSABLE.join(','));
