@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Академия Трейдинга — лендинг с модальным окном</title>
+  <meta name="description" content="Чистый шаблон лендинга с модальным окном: стили, кнопки-триггеры и без серверной отправки форм.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" data-sticky>
+    <div class="container header__inner">
+      <a class="logo" href="#">Trading<span>Academy</span></a>
+      <nav class="nav" aria-label="Основная навигация">
+        <a class="nav__link" href="#program">Программа</a>
+        <a class="nav__link" href="#format">Формат</a>
+        <a class="nav__link" href="#faq">FAQ</a>
+      </nav>
+      <button class="btn btn--primary" data-modal-open>Оставить заявку</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="section hero">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <h1 class="hero__title">Трейдинг простыми словами</h1>
+          <p class="hero__subtitle">Стартовая страница-шаблон, которую можно использовать как основу для собственного проекта. Адаптивный макет, кнопки и модальное окно без серверной логики.</p>
+          <div class="hero__actions">
+            <button class="btn btn--primary" data-modal-open>Записаться</button>
+            <a class="btn btn--ghost" href="#program">Смотреть программу</a>
+          </div>
+          <ul class="hero__list">
+            <li>Пошаговые модули обучения</li>
+            <li>Поддержка кураторов и сообщество</li>
+            <li>Практика на демо‑счёте</li>
+          </ul>
+        </div>
+        <div class="hero__visual" aria-hidden="true">
+          <!-- Decorative SVG gradient blob -->
+          <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" class="blob">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1" y1="1" y2="0">
+                <stop offset="0%" stop-color="var(--brand)"/>
+                <stop offset="100%" stop-color="var(--accent)"/>
+              </linearGradient>
+            </defs>
+            <path fill="url(#g1)"
+              d="M458.3,332.6Q427,415,338.9,462.8Q250.7,510.7,164.7,455.9Q78.7,401,85.4,305.5Q92.1,210.1,158.7,144.8Q225.4,79.6,319.9,92.9Q414.4,106.1,452.9,178.1Q491.6,250.2,458.3,332.6Z"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section features" id="format">
+      <div class="container">
+        <h2 class="section__title">Что внутри</h2>
+        <div class="cards">
+          <article class="card">
+            <h3 class="card__title">Видео‑уроки</h3>
+            <p class="card__text">Короткие объяснения без воды, теория и демонстрация на графиках.</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">Практика</h3>
+            <p class="card__text">Домашние задания, чек‑листы и разборы типичных ошибок.</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">Поддержка</h3>
+            <p class="card__text">Ответы на вопросы в чате и еженедельные сессии обратной связи.</p>
+          </article>
+        </div>
+        <div class="center">
+          <button class="btn btn--primary" data-modal-open>Получить консультацию</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Program -->
+    <section class="section program" id="program">
+      <div class="container">
+        <h2 class="section__title">Программа обучения</h2>
+        <ol class="timeline" role="list">
+          <li class="timeline__item">
+            <div class="timeline__dot" aria-hidden="true"></div>
+            <div>
+              <h3>Базовые термины и платформа</h3>
+              <p>Интерфейс терминала, типы ордеров, риск‑менеджмент и первые сделки.</p>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__dot" aria-hidden="true"></div>
+            <div>
+              <h3>Графики и паттерны</h3>
+              <p>Свечные модели, уровни, тренды и рабочие сетапы.</p>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__dot" aria-hidden="true"></div>
+            <div>
+              <h3>План и журнал</h3>
+              <p>Как фиксировать сделки и улучшать результаты на дистанции.</p>
+            </div>
+          </li>
+        </ol>
+        <div class="center">
+          <button class="btn btn--ghost" data-modal-open>Оставить заявку</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq" id="faq">
+      <div class="container">
+        <h2 class="section__title">Ответы на вопросы</h2>
+        <details class="faq__item">
+          <summary>Нужен ли опыт?</summary>
+          <p>Нет, шаблон рассчитан на начинающих: от терминала до первых сделок.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Будет ли доступ к материалам?</summary>
+          <p>Да, структура проекта предполагает удобные разделы и контроль прогресса.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Есть ли гарантия результата?</summary>
+          <p>Торговля сопряжена с рисками. Шаблон — основа для вашего сайта, а не финансовая рекомендация.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>© <span id="y"></span> Trading Academy. Шаблон для старта проекта.</div>
+      <div class="footer__links">
+        <a href="#" aria-disabled="true">Политика</a>
+        <a href="#" aria-disabled="true">Договор</a>
+        <button class="btn btn--sm" data-modal-open>Связаться</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal" data-modal aria-hidden="true">
+    <div class="modal__backdrop" data-modal-close></div>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title" data-modal-dialog>
+      <button class="modal__close" aria-label="Закрыть" data-modal-close>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <h2 id="modal-title" class="modal__title">Заявка</h2>
+      <p class="modal__text">Заполните контакты — мы свяжемся. Кнопка «Отправить» только демонстрирует работу UI (без сервера).</p>
+      <form class="form" id="lead-form" novalidate>
+        <label class="form__field">
+          <span>Имя</span>
+          <input type="text" name="name" autocomplete="name" placeholder="Ваше имя" required>
+        </label>
+        <label class="form__field">
+          <span>Телефон или email</span>
+          <input type="text" name="contact" autocomplete="tel" placeholder="+7 (___) ___‑__‑__" required>
+        </label>
+        <label class="form__field">
+          <span>Комментарий (необязательно)</span>
+          <textarea name="comment" rows="3" placeholder="Коротко опишите задачу"></textarea>
+        </label>
+        <label class="form__agree">
+          <input type="checkbox" required>
+          <span>Согласен(на) на обработку данных</span>
+        </label>
+        <button class="btn btn--primary btn--full" type="submit">Отправить (демо)</button>
+        <p class="form__note">Нажатие отправит данные только в консоль браузера — без серверной передачи.</p>
+      </form>
+      <div class="modal__success" hidden>
+        <h3>Заявка сохранена локально</h3>
+        <p>Данные формы выведены в консоль. Здесь можно показать кастомный экран благодарности.</p>
+        <button class="btn btn--primary" data-modal-close>Понятно</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
