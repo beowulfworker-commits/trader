@@ -3,132 +3,252 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Академия Трейдинга — лендинг с модальным окном</title>
-  <meta name="description" content="Чистый шаблон лендинга с модальным окном: стили, кнопки-триггеры и без серверной отправки форм.">
+  <title>OnTradingAcademy — обучение трейдингу с поддержкой</title>
+  <meta name="description" content="OnTradingAcademy: онлайн-программа по трейдингу с наставниками, живыми сессиями и пошаговым планом выхода на стабильные результаты." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Header -->
   <header class="header" data-sticky>
     <div class="container header__inner">
-      <a class="logo" href="#">Trading<span>Academy</span></a>
+      <a class="logo" href="#">OnTrading<span>Academy</span></a>
       <nav class="nav" aria-label="Основная навигация">
+        <a class="nav__link" href="#about">О курсе</a>
         <a class="nav__link" href="#program">Программа</a>
-        <a class="nav__link" href="#format">Формат</a>
+        <a class="nav__link" href="#experts">Эксперты</a>
         <a class="nav__link" href="#faq">FAQ</a>
       </nav>
-      <button class="btn btn--primary" data-modal-open>Оставить заявку</button>
+      <button class="btn btn--primary" data-modal-open>Записаться</button>
     </div>
   </header>
 
   <main>
-    <!-- Hero -->
-    <section class="section hero">
+    <section class="section hero" id="about">
       <div class="container hero__inner">
         <div class="hero__content">
-          <h1 class="hero__title">Трейдинг простыми словами</h1>
-          <p class="hero__subtitle">Стартовая страница-шаблон, которую можно использовать как основу для собственного проекта. Адаптивный макет, кнопки и модальное окно без серверной логики.</p>
+          <span class="eyebrow">Онлайн-академия по трейдингу</span>
+          <h1 class="hero__title">OnTradingAcademy — системное обучение с наставником и живой практикой</h1>
+          <p class="hero__subtitle">Прокачайте навыки работы на валютном и фондовом рынках с готовой стратегией, пошаговыми инструкциями и поддержкой экспертов, которые прошли путь от первых сделок до стабильных результатов.</p>
+          <ul class="hero__list">
+            <li>12 недель с живыми разборами сделок и домашними заданиями</li>
+            <li>Наставник, который сопровождает до первого профита</li>
+            <li>Доступ к сообществу и базе торговых шаблонов</li>
+          </ul>
           <div class="hero__actions">
-            <button class="btn btn--primary" data-modal-open>Записаться</button>
+            <button class="btn btn--primary" data-modal-open>Получить консультацию</button>
             <a class="btn btn--ghost" href="#program">Смотреть программу</a>
           </div>
-          <ul class="hero__list">
-            <li>Пошаговые модули обучения</li>
-            <li>Поддержка кураторов и сообщество</li>
-            <li>Практика на демо‑счёте</li>
-          </ul>
+          <div class="hero__note">Без спама и навязчивых продаж — только актуальная информация о старте и спецусловиях.</div>
         </div>
         <div class="hero__visual" aria-hidden="true">
-          <!-- Decorative SVG gradient blob -->
-          <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" class="blob">
-            <defs>
-              <linearGradient id="g1" x1="0" x2="1" y1="1" y2="0">
-                <stop offset="0%" stop-color="var(--brand)"/>
-                <stop offset="100%" stop-color="var(--accent)"/>
-              </linearGradient>
-            </defs>
-            <path fill="url(#g1)"
-              d="M458.3,332.6Q427,415,338.9,462.8Q250.7,510.7,164.7,455.9Q78.7,401,85.4,305.5Q92.1,210.1,158.7,144.8Q225.4,79.6,319.9,92.9Q414.4,106.1,452.9,178.1Q491.6,250.2,458.3,332.6Z"/>
-          </svg>
+          <div class="hero__badge">Полностью онлайн</div>
+          <div class="hero__panel">
+            <h3>Результаты выпускников 2024</h3>
+            <ul>
+              <li><span>82%</span> защитили депозит и удержали планку риска</li>
+              <li><span>64%</span> вышли в стабильный плюс на демо-счёте</li>
+              <li><span>1200+</span> часов живых сессий и практики</li>
+            </ul>
+            <p class="hero__panel-note">*Мы не даём гарантий доходности. Фокус курса — дисциплина, риск-менеджмент и проверенные сценарии.</p>
+          </div>
         </div>
+      </div>
+      <div class="container stats">
+        <div class="stats__item"><strong>3</strong><span> авторские стратегии под разные рынки</span></div>
+        <div class="stats__item"><strong>24/7</strong><span>чат поддержки с наставниками</span></div>
+        <div class="stats__item"><strong>+6</strong><span>дополнительных мастер-классов и бонусов</span></div>
       </div>
     </section>
 
-    <!-- Features -->
-    <section class="section features" id="format">
+    <section class="section why" id="why">
       <div class="container">
-        <h2 class="section__title">Что внутри</h2>
-        <div class="cards">
-          <article class="card">
-            <h3 class="card__title">Видео‑уроки</h3>
-            <p class="card__text">Короткие объяснения без воды, теория и демонстрация на графиках.</p>
+        <h2 class="section__title">Почему трейдеры выбирают OnTradingAcademy</h2>
+        <div class="grid grid--3">
+          <article class="feature-card">
+            <h3>Стратегия, а не хаос</h3>
+            <p>Вы получите чек-листы входа и выхода, рабочие шаблоны анализа рынка и алгоритмы действий в разных сценариях.</p>
           </article>
-          <article class="card">
-            <h3 class="card__title">Практика</h3>
-            <p class="card__text">Домашние задания, чек‑листы и разборы типичных ошибок.</p>
+          <article class="feature-card">
+            <h3>Наставник рядом</h3>
+            <p>Опытные трейдеры ведут вас на протяжении всего курса: помогают с настройкой терминала, разбирают сделки и дают обратную связь.</p>
           </article>
-          <article class="card">
-            <h3 class="card__title">Поддержка</h3>
-            <p class="card__text">Ответы на вопросы в чате и еженедельные сессии обратной связи.</p>
+          <article class="feature-card">
+            <h3>Практика на реальных кейсах</h3>
+            <p>Вы учитесь принимать решения на основе живых графиков, экономических событий и новостных факторов.</p>
           </article>
         </div>
-        <div class="center">
-          <button class="btn btn--primary" data-modal-open>Получить консультацию</button>
+        <div class="grid grid--3">
+          <article class="feature-card">
+            <h3>Контроль рисков</h3>
+            <p>С первого урока закрепляем риск-менеджмент: размер позиции, план движения цены и правила, которые защищают депозит.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Комьюнити трейдеров</h3>
+            <p>Закрытый клуб выпускников и живые созвоны каждую неделю помогают не бросить и расти быстрее.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Актуальность материалов</h3>
+            <p>Каждый поток получает обновления: свежие кейсы, видео и шаблоны с учётом текущих рыночных условий.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Program -->
     <section class="section program" id="program">
       <div class="container">
-        <h2 class="section__title">Программа обучения</h2>
+        <h2 class="section__title">Программа курса OnTradingAcademy</h2>
+        <p class="section__lead">Обучение длится 12 недель. Каждую неделю вы изучаете теорию, выполняете задания и закрепляете навыки на живой практике с наставником.</p>
         <ol class="timeline" role="list">
           <li class="timeline__item">
             <div class="timeline__dot" aria-hidden="true"></div>
             <div>
-              <h3>Базовые термины и платформа</h3>
-              <p>Интерфейс терминала, типы ордеров, риск‑менеджмент и первые сделки.</p>
+              <h3>Неделя 1–2. Фундамент и настройка</h3>
+              <p>Разбираем терминалы MT4/MT5 и TradingView, подключаем рабочие шаблоны, знакомимся с видами ордеров и структурой рынка.</p>
             </div>
           </li>
           <li class="timeline__item">
             <div class="timeline__dot" aria-hidden="true"></div>
             <div>
-              <h3>Графики и паттерны</h3>
-              <p>Свечные модели, уровни, тренды и рабочие сетапы.</p>
+              <h3>Неделя 3–4. Технический анализ</h3>
+              <p>Отрабатываем уровни поддержки/сопротивления, паттерны Price Action, индикаторы и логику построения торгового плана.</p>
             </div>
           </li>
           <li class="timeline__item">
             <div class="timeline__dot" aria-hidden="true"></div>
             <div>
-              <h3>План и журнал</h3>
-              <p>Как фиксировать сделки и улучшать результаты на дистанции.</p>
+              <h3>Неделя 5–6. Торговые стратегии</h3>
+              <p>Изучаем импульсную, контртрендовую и новостную стратегии. Прописываем сценарии действий и алгоритмы сопровождения сделок.</p>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__dot" aria-hidden="true"></div>
+            <div>
+              <h3>Неделя 7–8. Риск-менеджмент</h3>
+              <p>Считаем риск/прибыль, управляем объёмом позиций, учимся работать с просадками и формируем дисциплину.</p>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__dot" aria-hidden="true"></div>
+            <div>
+              <h3>Неделя 9–10. Психология трейдинга</h3>
+              <p>Разбираем эмоциональные ловушки, создаём чек-листы контроля и практикуем ведение журнала сделок.</p>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__dot" aria-hidden="true"></div>
+            <div>
+              <h3>Неделя 11–12. Практика и защита стратегии</h3>
+              <p>Работаем на демо-счёте, защищаем торговый план перед экспертами и получаем персональные рекомендации.</p>
             </div>
           </li>
         </ol>
-        <div class="center">
-          <button class="btn btn--ghost" data-modal-open>Оставить заявку</button>
+        <div class="bonus">
+          <div class="bonus__tag">Бонус</div>
+          <p>Доступ к библиотеке записей, шаблонам Excel для управления капиталом, чек-листам входа/выхода и ежемесячным обзорным вебинарам.</p>
+        </div>
+        <div class="cta cta--inline">
+          <div>
+            <h3>Хотите обсудить, подходит ли программа?</h3>
+            <p>Оставьте заявку — менеджер перезвонит и поможет выбрать формат участия.</p>
+          </div>
+          <button class="btn btn--primary" data-modal-open>Оставить заявку</button>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
+    <section class="section format" id="format">
+      <div class="container">
+        <h2 class="section__title">Формат обучения и поддержка</h2>
+        <div class="grid grid--3">
+          <article class="format-card">
+            <h3>Живые эфиры + записи</h3>
+            <p>Каждую неделю вы получаете 2 живых занятия и доступ к записи, чтобы пересматривать материалы в удобное время.</p>
+          </article>
+          <article class="format-card">
+            <h3>Домашние задания с проверкой</h3>
+            <p>Наставник отслеживает прогресс, даёт обратную связь и помогает закрепить правила управления риском.</p>
+          </article>
+          <article class="format-card">
+            <h3>Чат трейдеров</h3>
+            <p>Обменивайтесь идеями, получайте подсказки по сделкам и участвуйте в еженедельных сессиях вопросов и ответов.</p>
+          </article>
+        </div>
+        <div class="grid grid--2">
+          <article class="format-card">
+            <h3>Личный кабинет</h3>
+            <p>Система прогресса, доступ к материалам, чек-листам и фиксация домашних заданий в одном месте.</p>
+          </article>
+          <article class="format-card">
+            <h3>Поддержка после курса</h3>
+            <p>3 месяца доступа к клубу выпускников, обновлениям стратегий и закрытым обзорам рынка.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section experts" id="experts">
+      <div class="container">
+        <h2 class="section__title">Наставники и эксперты курса</h2>
+        <p class="section__lead">Команда практикующих трейдеров с опытом от 5 до 12 лет. Каждый из них сопровождает участников и делится собственными рабочими моделями.</p>
+        <div class="grid grid--3">
+          <article class="expert-card">
+            <div class="expert-card__avatar" aria-hidden="true">АК</div>
+            <h3>Алексей Ковалёв</h3>
+            <p>Автор курса и трейдер с 12-летним опытом на валютном рынке. Специализируется на среднесрочных стратегиях и управлении риском.</p>
+          </article>
+          <article class="expert-card">
+            <div class="expert-card__avatar" aria-hidden="true">МС</div>
+            <h3>Марина Соколова</h3>
+            <p>Куратор потока, бывший аналитик брокерской компании. Помогает участникам создавать торговые планы и разбирать фундаментальные факторы.</p>
+          </article>
+          <article class="expert-card">
+            <div class="expert-card__avatar" aria-hidden="true">ДП</div>
+            <h3>Дмитрий Плотников</h3>
+            <p>Психолог трейдинга, автор методики работы с эмоциональными триггерами. Ведёт практикумы по дисциплине и ведению журнала.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section guarantee" id="guarantee">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <h3>Прозрачные условия и гарантия возврата</h3>
+            <p>Если за первые 14 дней курс окажется не тем, чего вы ожидали, мы вернём оплату. Формируем расписание, учитывая ваш часовой пояс, и подбираем комфортный темп обучения.</p>
+          </div>
+          <div class="cta__actions">
+            <button class="btn btn--primary" data-modal-open>Оставить заявку</button>
+            <a class="btn btn--ghost" href="#faq">Изучить ответы</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section faq" id="faq">
       <div class="container">
-        <h2 class="section__title">Ответы на вопросы</h2>
-        <details class="faq__item">
-          <summary>Нужен ли опыт?</summary>
-          <p>Нет, шаблон рассчитан на начинающих: от терминала до первых сделок.</p>
+        <h2 class="section__title">Частые вопросы</h2>
+        <details class="faq__item" open>
+          <summary>Можно ли обучаться без опыта в трейдинге?</summary>
+          <p>Да. Мы начинаем с азов: установка терминала, базовые понятия, правила управления рисками. Наставник помогает адаптировать материалы под ваш уровень.</p>
         </details>
         <details class="faq__item">
-          <summary>Будет ли доступ к материалам?</summary>
-          <p>Да, структура проекта предполагает удобные разделы и контроль прогресса.</p>
+          <summary>Сколько времени нужно выделять на занятия?</summary>
+          <p>В среднем 6–8 часов в неделю: 2 живых занятия, выполнение домашних заданий и участие в разборе сделок.</p>
         </details>
         <details class="faq__item">
-          <summary>Есть ли гарантия результата?</summary>
-          <p>Торговля сопряжена с рисками. Шаблон — основа для вашего сайта, а не финансовая рекомендация.</p>
+          <summary>Что входит в стоимость программы?</summary>
+          <p>Доступ к личному кабинету, всем урокам, бонусным материалам, проверке домашних заданий, сообществу и поддержке наставника.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Даете ли вы сигналы или управляете счетом?</summary>
+          <p>Нет. Мы обучаем самостоятельной торговле, контролю рисков и формированию стратегии. Решения вы принимаете сами.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Смогу ли я совмещать обучение с работой?</summary>
+          <p>Занятия проходят вечером и дополняются записями. Вы можете смотреть уроки в удобное время и задавать вопросы в чате.</p>
         </details>
       </div>
     </section>
@@ -136,16 +256,15 @@
 
   <footer class="footer">
     <div class="container footer__inner">
-      <div>© <span id="y"></span> Trading Academy. Шаблон для старта проекта.</div>
+      <div>© <span id="y"></span> OnTradingAcademy. Обучение трейдингу и управление рисками.</div>
       <div class="footer__links">
-        <a href="#" aria-disabled="true">Политика</a>
-        <a href="#" aria-disabled="true">Договор</a>
+        <a href="#" aria-disabled="true">Политика конфиденциальности</a>
+        <a href="#" aria-disabled="true">Пользовательское соглашение</a>
         <button class="btn btn--sm" data-modal-open>Связаться</button>
       </div>
     </div>
   </footer>
 
-  <!-- Modal -->
   <div class="modal" data-modal aria-hidden="true">
     <div class="modal__backdrop" data-modal-close></div>
     <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title" data-modal-dialog>
@@ -154,8 +273,8 @@
           <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </button>
-      <h2 id="modal-title" class="modal__title">Заявка</h2>
-      <p class="modal__text">Заполните контакты — мы свяжемся. Кнопка «Отправить» только демонстрирует работу UI (без сервера).</p>
+      <h2 id="modal-title" class="modal__title">Оставьте заявку</h2>
+      <p class="modal__text">Заполните форму — менеджер свяжется с вами, расскажет о программе и подберёт формат участия. Кнопка «Отправить» демонстрирует работу интерфейса и не передает данные на сервер.</p>
       <form class="form" id="lead-form" novalidate>
         <label class="form__field">
           <span>Имя</span>
@@ -166,20 +285,20 @@
           <input type="text" name="contact" autocomplete="tel" placeholder="+7 (___) ___‑__‑__" required>
         </label>
         <label class="form__field">
-          <span>Комментарий (необязательно)</span>
-          <textarea name="comment" rows="3" placeholder="Коротко опишите задачу"></textarea>
+          <span>Комментарий</span>
+          <textarea name="comment" rows="3" placeholder="Расскажите о цели обучения"></textarea>
         </label>
         <label class="form__agree">
           <input type="checkbox" required>
-          <span>Согласен(на) на обработку данных</span>
+          <span>Согласен(на) на обработку персональных данных</span>
         </label>
         <button class="btn btn--primary btn--full" type="submit">Отправить (демо)</button>
-        <p class="form__note">Нажатие отправит данные только в консоль браузера — без серверной передачи.</p>
+        <p class="form__note">Данные выводятся в консоль браузера для тестирования интерфейса.</p>
       </form>
       <div class="modal__success" hidden>
-        <h3>Заявка сохранена локально</h3>
-        <p>Данные формы выведены в консоль. Здесь можно показать кастомный экран благодарности.</p>
-        <button class="btn btn--primary" data-modal-close>Понятно</button>
+        <h3>Спасибо! Заявка получена</h3>
+        <p>Мы сохранили данные в локальной консоли. Менеджер свяжется с вами в рабочее время.</p>
+        <button class="btn btn--primary" data-modal-close>Вернуться на сайт</button>
       </div>
     </div>
   </div>
