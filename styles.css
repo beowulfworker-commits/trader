@@ -229,7 +229,10 @@ textarea{resize:vertical;min-height:120px}
 .modal__close{position:absolute;top:12px;right:12px;border:none;background:transparent;color:var(--muted);padding:10px;border-radius:8px;cursor:pointer}
 .modal__title{margin:0 0 8px;font-size:24px;font-weight:700}
 .modal__text{margin:0 0 18px;color:var(--muted)}
-.form{display:grid;gap:16px}
+.form * {
+  max-width: 100%;overflow: hidden;text-overflow: ellipsis;box-sizing: border-box;
+}
+
 
 /* Lock scroll when modal open */
 body.is-locked{overflow:hidden}

@@ -2,3 +2,8 @@ https://forexradar.org/ontradingacademy
 
 C:\Home\Projects\TraidTrafic
 
+.form * {
+  max-width: 100%;overflow: hidden;text-overflow: ellipsis;box-sizing: border-box;
+}
+
+.form{display:grid;gap:16px;overflow: hidden;max-width: 100%;box-sizing: border-box;}
