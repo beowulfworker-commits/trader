@@ -14,13 +14,23 @@
   <header class="header" data-sticky>
     <div class="container header__inner">
       <a class="logo" href="#">OnTrading<span>Academy</span></a>
-      <nav class="nav" aria-label="Основная навигация">
-        <a class="nav__link" href="#about">О курсе</a>
-        <a class="nav__link" href="#program">Программа</a>
-        <a class="nav__link" href="#experts">Эксперты</a>
-        <a class="nav__link" href="#faq">FAQ</a>
-      </nav>
-      <button class="btn btn--primary" data-modal-open>Записаться</button>
+      <button class="header__toggle" type="button" aria-expanded="false" aria-controls="header-menu" aria-label="Открыть меню" data-header-toggle>
+        <span class="sr-only">Меню</span>
+        <span class="header__toggle-bars" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+      <div class="header__menu" id="header-menu" data-header-menu>
+        <nav class="nav" aria-label="Основная навигация">
+          <a class="nav__link" href="#about">О курсе</a>
+          <a class="nav__link" href="#program">Программа</a>
+          <a class="nav__link" href="#experts">Эксперты</a>
+          <a class="nav__link" href="#faq">FAQ</a>
+        </nav>
+        <button class="btn btn--primary header__cta" data-modal-open>Записаться</button>
+      </div>
     </div>
   </header>
 
