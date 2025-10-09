@@ -6,6 +6,8 @@
   const closers = modal?.querySelectorAll('[data-modal-close]') || [];
   const form = modal?.querySelector('#lead-form');
   const success = modal?.querySelector('.modal__success');
+  const modalTitle = modal?.querySelector('#modal-title');
+  const modalText = modal?.querySelector('.modal__text');
   let lastFocused = null;
 
   const FOCUSABLE = [
@@ -148,6 +150,8 @@
     document.removeEventListener('keydown', trapFocus);
     success?.setAttribute('hidden','');
     form?.removeAttribute('hidden');
+    modalTitle?.removeAttribute('hidden');
+    modalText?.removeAttribute('hidden');
     lastFocused?.focus();
   }
 
@@ -165,6 +169,8 @@
       console.log('[lead-form] demo submission:', data);
       form.setAttribute('hidden','');
       success?.removeAttribute('hidden');
+      modalTitle?.setAttribute('hidden','');
+      modalText?.setAttribute('hidden','');
     } catch(err){
       console.error('Demo submit failed', err);
     }
