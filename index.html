@@ -277,6 +277,9 @@
     </div>
   </footer>
 
+  <!-- СКРЫТЫЙ iframe: форма шлёт данные сюда, чтобы не перезагружать страницу -->
+  <iframe name="gsheet_sink" style="display:none" title="Фоновой приёмник формы"></iframe>
+
   <div class="modal" data-modal aria-hidden="true">
     <div class="modal__backdrop" data-modal-close></div>
     <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title" data-modal-dialog>
@@ -285,9 +288,12 @@
           <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </button>
-      <h2 id="modal-title" class="modal__title">Оставьте заявку</h2>
-      <p class="modal__text">Заполните форму — менеджер свяжется с вами, расскажет о программе и подберёт формат участия.</p>
-      <form class="form" id="lead-form" novalidate>
+      <h2 id="modal-title" class="modal__title">Заявка на участие</h2>
+      
+      <!-- ВАЖНО: action и target обеспечивают прямую отправку в Google Apps Script -->
+      <!-- Замените ВАШ_WEB_APP_URL на фактический URL веб-приложения (оканчивается на /exec) -->
+      <form class="form" id="lead-form" method="POST" action="ВАШ_WEB_APP_URL" target="gsheet_sink">
+        <p class="modal__text">Заполните форму — менеджер свяжется с вами, расскажет о программе и подберёт формат участия.</p>
         <label class="form__field">
           <span>Имя</span>
           <input type="text" name="name" autocomplete="name" placeholder="Ваше имя" required>
@@ -296,12 +302,18 @@
           <span>Номер телефона</span>
           <input type="tel" name="contact" autocomplete="tel" placeholder="+7 (___) ___‑__‑__" required>
         </label>
+
+        <!-- Необязательное поле: прокидываем ID развертывания для доп.проверки на стороне скрипта -->
+        <!-- Замените ВАШ_DEPLOYMENT_ID, если хотите передавать его; можно оставить пустым -->
+        <input type="hidden" name="deploymentId" value="ВАШ_DEPLOYMENT_ID">
+
         <label class="form__agree">
           <span>Согласен(на) на обработку <a href="#" class="form__agree-link">персональных данных</a></span>
         </label>
         <button class="btn btn--primary btn--full" type="submit">Отправить</button>
-        <p class="form__note">...</p>
+        <p class="form__note"></p>
       </form>
+
       <div class="modal__success" hidden>
         <h3>Спасибо! Заявка получена</h3>
         <p>Менеджер свяжется с вами в рабочее время.</p>
@@ -309,6 +321,16 @@
       </div>
     </div>
   </div>
+
+  <!-- Конфиг для фронта: удобно держать URL/ID здесь или в .env при сборке -->
+  <script>
+    window.GSCRIPT = {
+      // ВСТАВЬТЕ URL веб‑приложения Google Apps Script (оканчивается на /exec)
+      WEBAPP_URL: 'https://script.google.com/macros/s/AKfycbxalNd41lFpyFXfC2Qqk_w6FKV9zlm1u5Z-B0m2e7xeE5ooC-Gk5IOFixrmjYRwr3Z5JA/exec',
+      // Необязательно: укажите ID развертывания (например, AKfyc...-1), если хотите передавать его вместе с формой
+      DEPLOYMENT_ID: 'AKfycbxalNd41lFpyFXfC2Qqk_w6FKV9zlm1u5Z-B0m2e7xeE5ooC-Gk5IOFixrmjYRwr3Z5JA'
+    };
+  </script>
 
   <script src="main.js" defer></script>
 </body>
